@@ -1,0 +1,33 @@
+{
+  "name": "viaq-backend-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "device": "node consumers/deviceConsumer.js",
+    "data-saver": "node consumers/dataSaverConsumer.js",
+    "notification": "node consumers/notificationConsumer.js",
+    "all-consumers": "concurrently \"node consumers/deviceConsumer.js\" \"node consumers/dataSaverConsumer.js\" \"node consumers/notificationConsumer.js\"",
+    "generator": "node generator/data-generator.js",
+    "server": "cross-env MODE=server nodemon index.js",
+    "server-consumer" : "concurrently \"node consumers/deviceConsumer.js\" \"node consumers/dataSaverConsumer.js\" \"node consumers/notificationConsumer.js\" \"cross-env MODE=consumer nodemon index.js\"",
+    "server-full": "concurrently \"npm run all-consumers\" \"npm run generator\" \"cross-env MODE=consumer-generator npm run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "***this project created for this task :***",
+  "dependencies": {
+    "amqplib": "^0.10.7",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.1",
+    "mqtt": "^5.12.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.10"
+  }
+}
