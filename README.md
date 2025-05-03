@@ -91,6 +91,10 @@ You can run the service in different modes using the following npm scripts:
     ```bash
     - npm run server-consumer #run server with consumers
     ```
+- ### Run Data Generator for Test
+    ```bash
+    - npm run generator #run a data generator for test 
+    ```
 
 ## API Endpoints
 **1. Devices Endpoint**
