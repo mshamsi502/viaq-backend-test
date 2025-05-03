@@ -3,7 +3,9 @@ const mqtt = require('mqtt');
 const amqp = require('amqplib');
 const { publishToQueues } = require('../rabbitmq/publisher');
 
-const client = mqtt.connect('mqtt://broker.emqx.io:1883');
+const client = mqtt.connect('mqtt://broker.emqx.io:1883', {
+  reconnectPeriod: 5000,
+});
 const topic = '/VIAQ_Test_Employee/TH-MW01test01';
 
 let channel;
@@ -22,6 +24,19 @@ client.on('connect', async () => {
     console.log(`📡 Subscribed to ${topic}`);
   });
 });
+
+client.on('reconnect', () => {
+  console.log('🔄 Attempting to reconnect...');
+});
+
+client.on('close', () => {
+  console.log('❌ Connection closed');
+});
+
+client.on('error', (err) => {
+  console.error('Error: ', err);
+});
+
 
 client.on('message', (topic, message) => {
   if(message.serialNumber) {

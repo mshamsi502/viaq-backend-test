@@ -47,8 +47,8 @@ This is a backend service built to handle various tasks, such as interacting wit
 ## Installation & Setup
 **1. Clone the repository and navigate into the project directory:**
 ```bash
-git clone https://github.com/yourusername/backend-service-project.git
-cd backend-service-project
+git clone https://github.com/mshamsi502/viaq-backend-test.git
+cd viaq-backend-test
 ```
 **2. Create .env File in Root Project and Copy Below Variables:**
 ```bash
